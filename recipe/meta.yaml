@@ -15,7 +15,6 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  noarch: python
   entry_points:
     - pyjwt = jwt.__main__:main
 
