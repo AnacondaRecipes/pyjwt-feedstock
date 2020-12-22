@@ -15,10 +15,8 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  entry_points:
-    - pyjwt = jwt.__main__:main
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
 
 requirements:
   host:
@@ -27,16 +25,12 @@ requirements:
 
   run:
     - python
-    - cryptography >=1.4
+    - cryptography >=2.6,<3.0.0
 
 test:
   imports:
     - jwt
-    - jwt.contrib
-    - jwt.contrib.algorithms
-
-  commands:
-    - pyjwt --help
+    - jwt.algorithms
 
 about:
   home: https://github.com/jpadilla/pyjwt
