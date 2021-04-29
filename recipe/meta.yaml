@@ -20,17 +20,21 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
 
   run:
-    - python
-    - cryptography >=2.6,<3.0.0
+    - python >=3.6
+  run_constrained:
+    - cryptography >=3.3.1,<4.0.0
 
 test:
+  requires:
+    - pip
   imports:
     - jwt
-    - jwt.algorithms
+  commands:
+    - pip check
 
 about:
   home: https://github.com/jpadilla/pyjwt
@@ -44,3 +48,4 @@ about:
 extra:
   recipe-maintainers:
     - pmlandwehr
+    - ocefpaf
