@@ -1,8 +1,8 @@
 {% set name = "PyJWT" %}
-{% set version = "2.1.0" %}
+{% set version = "2.3.0" %}
 {% set bundle = "tar.gz" %}
 {% set hash_type = "sha256" %}
-{% set hash = "fba44e7898bbca160a2b2b501f492824fc8382485d3a6f11ba5d0c1937ce6130" %}
+{% set hash = "b888b4d56f06f6dcd777210c334e69c737be74755d3e5e9ee3fe67dc18a0ee41" %}
 
 
 package:
