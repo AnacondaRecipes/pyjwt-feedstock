@@ -16,6 +16,7 @@ source:
 
 build:
   number: 0
+  skip: True  # [py<36]
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
 
 requirements:
@@ -42,7 +43,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'JSON Web Token implementation in Python'
+  summary: JSON Web Token implementation in Python
   dev_url: https://github.com/jpadilla/pyjwt
   doc_url: https://pyjwt.readthedocs.io/en/latest/
 
