@@ -1,8 +1,8 @@
 {% set name = "PyJWT" %}
-{% set version = "2.1.0" %}
+{% set version = "2.4.0" %}
 {% set bundle = "tar.gz" %}
 {% set hash_type = "sha256" %}
-{% set hash = "fba44e7898bbca160a2b2b501f492824fc8382485d3a6f11ba5d0c1937ce6130" %}
+{% set hash = "d42908208c699b3b973cbeb01a969ba6a96c821eefb1c5bfe4c390c01d67abba" %}
 
 
 package:
@@ -19,16 +19,15 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
 
 requirements:
-  build:
-    - python
   host:
     - python
     - pip
-
+    - setuptools
+    - wheel
   run:
     - python
   run_constrained:
-    - cryptography >=3.3.1,<4.0.0
+    - cryptography >=3.3.1
 
 test:
   requires:
