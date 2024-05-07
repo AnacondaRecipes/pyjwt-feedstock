@@ -1,23 +1,18 @@
 {% set name = "PyJWT" %}
-{% set version = "2.4.0" %}
-{% set bundle = "tar.gz" %}
-{% set hash_type = "sha256" %}
-{% set hash = "d42908208c699b3b973cbeb01a969ba6a96c821eefb1c5bfe4c390c01d67abba" %}
-
+{% set version = "2.8.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ bundle }}
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  {{ hash_type }}: {{ hash }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 57e28d156e3d5c10088e0c68abb90bfac3df82b40a71bd0daa20c65ccd5c23de
 
 build:
   number: 0
-  skip: True  # [py<36]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
@@ -27,16 +22,21 @@ requirements:
     - wheel
   run:
     - python
+    - typing_extensions # [py<=37]
   run_constrained:
-    - cryptography >=3.3.1
+    - cryptography >=3.4.0
 
 test:
-  requires:
-    - pip
+  source_files:
+    - tests
   imports:
     - jwt
+  requires:
+    - pip
+    - pytest >=6.0.0,<7.0.0
   commands:
     - pip check
+    - pytest tests
 
 about:
   home: https://github.com/jpadilla/pyjwt
@@ -44,8 +44,11 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: JSON Web Token implementation in Python
+  description: |
+    PyJWT is a Python library which allows you to encode and decode JSON Web Tokens (JWT). 
+    JWT is an open, industry-standard (RFC 7519) for representing claims securely between two parties.
   dev_url: https://github.com/jpadilla/pyjwt
-  doc_url: https://pyjwt.readthedocs.io/en/latest/
+  doc_url: https://pyjwt.readthedocs.io
 
 extra:
   recipe-maintainers:

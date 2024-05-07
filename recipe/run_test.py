@@ -1,9 +1,9 @@
 import jwt
 
+# See an example https://pyjwt.readthedocs.io/en/latest/usage.html#encoding-decoding-tokens-with-hs256
+KEY = "secret"
+encoded = jwt.encode({"some": "payload"}, KEY, algorithm="HS256")
 
-key = "secret"
-encoded = jwt.encode({"some": "payload"}, key, algorithm="HS256")
+assert encoded == 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb21lIjoicGF5bG9hZCJ9.4twFt5NiznN84AWoo1d7KO1T_yoc0Z6XOpOVswacPZg'
 
-assert encoded == 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb21lIjoicGF5bG9hZCJ9.Joh1R2dYzkRvDkqv3sygm5YyK8Gi4ShZqbhK2gxcs2U'
-
-assert jwt.decode(encoded, key, algorithms="HS256") == {'some': 'payload'}
+assert jwt.decode(encoded, KEY, algorithms="HS256") == {'some': 'payload'}
