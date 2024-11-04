@@ -1,5 +1,5 @@
 {% set name = "PyJWT" %}
-{% set version = "2.8.0" %}
+{% set version = "2.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 57e28d156e3d5c10088e0c68abb90bfac3df82b40a71bd0daa20c65ccd5c23de
+  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 build:
   number: 0
-  skip: true  # [py<37]
+  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -22,7 +22,6 @@ requirements:
     - wheel
   run:
     - python
-    - typing_extensions # [py<=37]
   run_constrained:
     - cryptography >=3.4.0
 
