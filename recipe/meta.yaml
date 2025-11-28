@@ -32,7 +32,8 @@ test:
     - jwt
   requires:
     - pip
-    - pytest >=6.0.0,<7.0.0
+    # Pin the upper bount to <9.0.0 to support Python 3.14 
+    - pytest >=6.0.0,<9.0.0
   commands:
     - pip check
     - pytest tests
