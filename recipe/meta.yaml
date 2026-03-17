@@ -22,6 +22,7 @@ requirements:
     - wheel
   run:
     - python
+    - typing-extensions >=4.0 # [py<311]
   run_constrained:
     - cryptography >=3.4.0
 
