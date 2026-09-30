@@ -1,13 +1,13 @@
 {% set name = "pyjwt" %}
-{% set version = "2.13.0" %}
+{% set version = "2.15.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 41571c89ca91598c79e8ef18a2d07367d4810fbbd6f637794879baf1b7703423
+  sha256: 4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8
 
 build:
   number: 0
@@ -19,7 +19,6 @@ requirements:
     - python
     - pip
     - setuptools >=77.0.3
-    - wheel
   run:
     - python
     - typing-extensions >=4.0  # [py<311]
@@ -37,7 +36,7 @@ test:
     - pytest >=6.0.0,<9.0.0
   commands:
     - pip check
-    - pytest tests
+    - pytest -vv tests
 
 about:
   home: https://github.com/jpadilla/pyjwt
